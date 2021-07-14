@@ -1,0 +1,68 @@
+body{
+    background-color: #161B22;
+}
+.container{
+    width: 100%;
+    display: grid;
+    grid-template-columns: 33% 26% 33%;
+    column-gap: 30px;
+    justify-items: center;
+    align-items: center;
+    column-rule: 20px;
+}
+
+@media screen and ( max-width : 900px) {
+    .container{
+        width: 100%;
+        display: grid;
+        justify-content: center;
+        grid-template-columns: 33%;
+        row-gap: 50px;
+    }
+}
+
+.items{
+    background-color: #1D2126;
+    height: 350px;
+    width: 280px;
+    border: 1px solid black;
+    border-radius: 30px;
+    overflow: hidden;
+    justify-content: center;
+    align-items: center;
+    /* box-shadow: 7px 9px 16px 4px #437ac6; */
+    transition: box-shadow 0.2s;
+}
+.items:hover{
+    box-shadow: 9px 10px 8px -4px #9a7ac6
+}
+
+
+.images{
+    border-radius: 50%;
+    width: 100px;
+    position: relative;
+    left: 30%;
+    margin-top:20px;
+}
+h2{
+    /* color: #42da5c; */
+    color: #39D152;
+    text-decoration: none;
+}
+h4{
+    color:#2c73ed;
+    
+}
+a , h4{
+    text-align: center;            
+    text-decoration: none;
+    color:#5784d1;
+}
+ul{
+    list-style: none;  
+}
+ul li::before{
+    content: "\2022  "; 
+    color: #39D152;
+}
