@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Writing Demo !</title>
+    <link rel="stylesheet" href="styleseet.css">
+
+
+</head>
+<body>
+
+    <div>
+        <span id="text1">This is my Heading 1 </span>
+        <span id="shine">_</span>
+        <br><br><br><br><br>
+        <span id="text2">This is my Heading 2 </span>
+        <span id="shine">_</span>
+        <br><br><br><br><br>
+    </div>
+    
+    
+</body>
+</html>
+
+
+<script src="jquery-3.6.0.js"></script>
+<script>
+    function writingTemplate(object_id)
+    {
+        var id = object_id;
+        var text = "";
+        var index = 0;
+        var main_id = 0;
+
+        function hide()
+        {
+            var temp = $(id).html();
+            $(id).html( temp.substr(0,temp.length-2) );
+            
+            if(temp.length <= 2)
+            {
+                window.clearInterval(main_id);
+                index = 0;
+                main_id = window.setInterval(show , 100); 
+            }
+        }
+
+        function show()
+        {
+            $(id).html( $(id).html() + text[index]);
+            index += 1;
+            
+            if(index == text.length)
+            {
+                window.clearInterval(main_id);
+                window.setTimeout(function(){
+                    main_id = window.setInterval(hide , 80);
+                }, 2000);
+            }
+        }
+
+        this.start = function()
+        {
+            text = $(id).html();
+            $(id).html("");
+            main_id = window.setInterval(show , 100);    
+        }
+    }
+
+    var obj = new writingTemplate("#text1");
+    obj.start();
+    
+    var obj2 = new writingTemplate("#text2");
+    obj2.start();
+
+
+</script>
