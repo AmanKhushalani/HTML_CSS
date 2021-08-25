@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<style>
+    *{
+        box-sizing: border-box;
+    }
+
+    body{
+        background-color: black;
+    }
+
+    .btn{
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 80px;
+        height: 80px;
+        cursor: pointer;
+        transition: all 300ms ease-in-out;
+        border: 3px solid red;
+    }
+    
+    .menu{
+        width: 60px;
+        height: 5px;
+        transition: all 300ms ease-in-out;
+        background-color: white;
+        border-radius: 5px;   
+    }
+    .menu::after , .menu::before{
+        content: '';
+        position: absolute;
+        width: 60px;
+        height: 5px;
+        transition: all 300ms linear;
+        background-color: white;
+        border-radius: 5px;       
+    }
+    .menu::after{
+        transform: translateY(-16px);
+    } 
+    .menu::before{
+        transform: translateY(16px);
+    }
+
+    .btn.open .menu{
+        background-color: transparent;
+    }
+    .btn.open .menu::before , .btn.open .menu::after{
+        transform: translateY(0);
+        position: block;
+    }    
+    
+    .btn.cross .menu::before{
+        transform: rotate(45deg);
+    }    
+    .btn.cross .menu::after{
+        transform: rotate(-45deg);
+    }    
+    </style>
+<body>
+
+    <div class="btn"><div class="menu"></div></div>
+    
+</body>
+</html>
+
+<script src="jquery-3.6.0.js"></script>
+
+<script>
+    $(document).ready(function(){
+
+        var position = false;
+        var btn = document.querySelector('.btn');
+
+        $(".btn").click(function(){
+            console.log("clicked")
+            if(position == false)
+            {
+                console.log("true")
+                btn.classList.add('open')
+                setTimeout(function(){btn.classList.add('cross')} , 350)
+                position = true;
+            }
+            else
+            {
+                console.log("false")
+                btn.classList.remove('cross')
+                setTimeout(function(){btn.classList.remove('open')} , 350)
+                position = false;
+            }
+        })
+
+    })
+</script>
